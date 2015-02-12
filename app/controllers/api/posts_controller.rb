@@ -1,7 +1,7 @@
 class Api::PostsController < ApplicationController
-
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-
+  before_action :authorize_valid_tokens,:except => :authorize
+  
   # GET /posts.json
   def index
     @posts = Post.all
@@ -44,6 +44,12 @@ class Api::PostsController < ApplicationController
   # DELETE /posts/1.json
   def destroy
     render json: @post.destroy
+  end
+
+  def authorize
+    @response = User.authorize(params[:email],params[:password])
+    render json: @response
+
   end
 
   private
