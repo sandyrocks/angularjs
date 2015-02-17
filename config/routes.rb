@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
   namespace :api do
     resources :posts
-    get '/authorize' => 'posts#authorize'
+    # get '/authorize' => 'posts#authorize'
     post '/authorize' => 'posts#authorize'
   end
 

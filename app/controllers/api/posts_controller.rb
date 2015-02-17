@@ -4,7 +4,7 @@ class Api::PostsController < ApplicationController
   
   # GET /posts.json
   def index
-    @posts = Post.all
+    @posts = Post.where(user_id: @user.id)
     render json: @posts
   end
 
@@ -24,12 +24,12 @@ class Api::PostsController < ApplicationController
 
   # POST /posts.json
   def create
-    @post = Post.new(tweet_params)
-      if @post.save
-        render json: @post
-      else
-        render json: @post.errors
-      end
+    @post = @user.posts.new(post_params)
+    if @post.save
+      render json: @post
+    else
+      render json: @post.errors
+    end
   end
 
   # PATCH/PUT /posts/1.json
@@ -47,27 +47,22 @@ class Api::PostsController < ApplicationController
   end
 
   def authorize
-    email =  params[:email]
-    password =  params[:password]
-    auth_type =  params[:auth_type]
-    if email.present? && password.present? && auth_type.present?
-       @response = User.authorize(email,password,auth_type)
+    if params[:email].present? && params[:password].present? && params[:auth_type].present?
+       @response = User.authorize(params[:email], params[:password], params[:auth_type])
     else
-      @response = {"message" => "Invalid Credentials"}
+      @response = { "message" => "Invalid Credentials" }
     end
-
     render json: @response
-
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
-      @post = Post.find_by_id(params[:id]) || []
+      @post = Post.find_by_id(params[:id]) 
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def tweet_params
+    def post_params
       params.require(:post).permit(:title)
     end
 end

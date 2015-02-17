@@ -16,5 +16,9 @@ angular
               templateUrl: 'post.html',
               controller: 'PostCtrl'  
             })
+            .when('/posts/edit', {
+              templateUrl: 'edit.html',
+              controller: 'PostCtrl'
+            })
         $locationProvider.html5Mode(true);
     });

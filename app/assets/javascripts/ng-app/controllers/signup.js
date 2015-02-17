@@ -7,7 +7,7 @@ angular.module('JwtWebTokens')
                 $scope.credentials = {"email": $scope.user.email, "password" : $scope.user.password, "auth_type" : 1}
         		$http.post('/api/authorize',$scope.credentials).success(function(data) {
                     $rootScope.token = data.token     
-                    $scope.username = data.username       
+                    $rootScope.username = data.username
                     $location.path("/posts");
                 });
         	}else {

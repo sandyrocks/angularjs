@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_many :posts
+
   def self.authorize(email,password,auth_type)
     @user = User.find_by(email: email, password_hash: password)
     if auth_type == 1
