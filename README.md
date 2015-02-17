@@ -7,16 +7,17 @@ Setup rails application
 ------------------------------------
 
 Steps to follow for Jwt Web Tokens:
- * Get pull of this repository code. 
- * bundle install
- * Setup database settings into: 'config/database.yml' 
- * Run: rake db:create && db:migrate && db:seed
- * Start the rails server by command: rails s
- * User will lands on login page.
- * Credentials: email => 'jwt@example.com' & password => 'jwt123'
- * After login user will be redirect to '/posts url'
- * User will see some of the posts already created using seeds file and a form to create a new posts.
- * User can perform all CRUD operations.
+
+* Get pull of this repository code. 
+* bundle install
+* Setup database settings into: 'config/database.yml' 
+* Run: rake db:create && db:migrate && db:seed
+* Start the rails server by command: rails s
+* User will lands on login page.
+* Credentials: email => 'jwt@example.com' & password => 'jwt123'
+* After login user will be redirect to '/posts url'
+* User will see some of the posts already created using seeds file and a form to create a new posts.
+* User can perform all CRUD operations.
 
 Ruby on Rails
 ---------------------------------------
