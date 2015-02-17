@@ -1,3 +1,6 @@
+Jwt Web Tokens
+====================================
+
 Steps to follow for Jwt Web Tokens POC
 
 1: run rake db:seeds
