@@ -1,11 +1,11 @@
 class User < ActiveRecord::Base
-  def self.authorize(email,password)
-    if email.present? && password.present?
-      @user = User.find_by(email: email, password_hash: password)
+  def self.authorize(email,password,auth_type)
+    @user = User.find_by(email: email, password_hash: password)
+    if auth_type == 1
       @user ||= User.create(email: email, password_hash: password)
-      return generate_valid_tokens(@user)
+      return {"token" => generate_valid_tokens(@user), "username" => @user.email}
     else
-       {"Message" => "Invalid Credentials"}
+      return (@user.present?) ? {"token" => generate_valid_tokens(@user), "username" => @user.email} : {:message => "Invalid Username/Password"}
     end
   end
 

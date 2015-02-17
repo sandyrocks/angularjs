@@ -13,3 +13,5 @@
  *= require_tree .
  *= require_self
  */
+.login-container { width: 295px !important;}
+.post-container {width: 400px !important;}

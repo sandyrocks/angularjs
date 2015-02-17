@@ -3,8 +3,12 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
   namespace :api do
     resources :posts
+    get '/authorize' => 'posts#authorize'
     post '/authorize' => 'posts#authorize'
   end
+
+  root 'application#index'
+  get '*path' => 'application#index'
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'

@@ -10,10 +10,10 @@ class ApplicationController < ActionController::Base
       user_id = decoded_data.first.keys.first.to_i
       user = User.find_by_id(user_id)
       unless user.email == decoded_data.first[user_id.to_s]
-        render json: {:Message => "Invalid Tokens"}
+        render json: {:message => "Invalid Tokens"}
       end
     else
-      render json: {:Message => "Invalid Tokens"}
+      render json: {:message => "Invalid Tokens"}
     end
   end
 end
