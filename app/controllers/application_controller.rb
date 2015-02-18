@@ -18,7 +18,8 @@ class ApplicationController < ActionController::Base
 
   # Check if token is valid
   def valid_token?
-    valid_jwt_token?(params[:token])
+    token_validator = TokenValidator.new(params[:token])
+    @user ||= token_validator.user
+    return token_validator.valid_jwt_token?
   end
-
 end
