@@ -1,6 +1,6 @@
 class Api::PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-  before_action :authorize_valid_tokens,:except => [:authorize]
+  before_action :authorize_valid_tokens, :except => [:authorize]
   
   # GET /posts.json
   def index

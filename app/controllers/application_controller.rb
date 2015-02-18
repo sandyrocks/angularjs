@@ -6,8 +6,19 @@ class ApplicationController < ActionController::Base
 
   #Authorize tokens in order to server the posts api
   def authorize_valid_tokens
-    unless is_valid_jwt_token?(params[:token])
-      render json: {:message => "Invalid Tokens"}
-    end
+    redner invalid_token unless valid_token?
   end
+
+  private
+
+  # Return invalid token json
+  def invalid_token
+    {json: {:message => "Invalid Tokens"}}
+  end
+
+  # Check if token is valid
+  def valid_token?
+    is_valid_jwt_token?(params[:token])
+  end
+
 end
