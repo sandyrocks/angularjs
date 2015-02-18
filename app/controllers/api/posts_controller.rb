@@ -34,11 +34,11 @@ class Api::PostsController < ApplicationController
 
   # PATCH/PUT /posts/1.json
   def update
-      if @post.update(post_params)
-        render json: @post
-      else
-        render json: @post.errors
-      end
+    if @post.update(post_params)
+      render json: @post
+    else
+      render json: @post.errors
+    end
   end
 
   # DELETE /posts/1.json

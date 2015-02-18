@@ -14,7 +14,6 @@ class User < ActiveRecord::Base
   def self.generate_valid_tokens(user)
     @token = JWT.encode({user.id.to_s => user.email.to_s}, "secret")
   end
-
 end
 
 
