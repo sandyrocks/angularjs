@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
   #Authorize tokens in order to server the posts api
   def authorize_valid_tokens
-    redner invalid_token unless valid_token?
+    render invalid_token unless valid_token?
   end
 
   private
